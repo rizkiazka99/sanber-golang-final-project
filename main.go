@@ -24,16 +24,16 @@ func connectToDB() {
 
 	psqlInfo := fmt.Sprintf(
 		"host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
-		// os.Getenv("PGHOST"),
-		// os.Getenv("PGPORT"),
-		// os.Getenv("PGUSER"),
-		// os.Getenv("PGPASSWORD"),
-		// os.Getenv("PGDATABASE"),
-		os.Getenv("DB_HOST"),
-		os.Getenv("DB_PORT"),
-		os.Getenv("DB_USER"),
-		os.Getenv("DB_PASSWORD"),
-		os.Getenv("DB_NAME"),
+		os.Getenv("PGHOST"),
+		os.Getenv("PGPORT"),
+		os.Getenv("PGUSER"),
+		os.Getenv("PGPASSWORD"),
+		os.Getenv("PGDATABASE"),
+		// os.Getenv("DB_HOST"),
+		// os.Getenv("DB_PORT"),
+		// os.Getenv("DB_USER"),
+		// os.Getenv("DB_PASSWORD"),
+		// os.Getenv("DB_NAME"),
 	)
 
 	config.Db, config.Err = sql.Open("postgres", psqlInfo)
@@ -52,8 +52,8 @@ func connectToDB() {
 }
 
 func startServer() {
-	var PORT = "8080"
-	// var PORT = os.Getenv("PORT")
+	// var PORT = "8080"
+	var PORT = os.Getenv("PORT")
 
 	connectToDB()
 	router.StartServer().Run(":" + PORT)
