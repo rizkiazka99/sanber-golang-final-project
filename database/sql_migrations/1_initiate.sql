@@ -15,9 +15,9 @@ CREATE TABLE items (
     description TEXT,
     price INT NOT NULL,
     stock INT NOT NULL,
-    created_by TIMESTAMP NOT NULL,
+    created_by varchar(255) NOT NULL,
     created_at TIMESTAMP NOT NULL,
-    modified_by TIMESTAMP NOT NULL,
+    modified_by varchar(255) NOT NULL,
     modified_at TIMESTAMP NOT NULL
 );
 

@@ -72,7 +72,7 @@ func Login(ctx *gin.Context) {
 			var data models.LoggedIn
 			idStr := strconv.Itoa(userData.Id)
 
-			accessToken, e := middleware.GenerateJwt(idStr)
+			accessToken, e := middleware.GenerateJwt(idStr, userData.Role)
 
 			if e != nil {
 				ctx.JSON(http.StatusBadRequest, gin.H{

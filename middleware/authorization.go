@@ -26,25 +26,25 @@ func isAccessTokenAssigned(token string) bool {
 	}
 }
 
-func ValidateAccessToken(ctx *gin.Context) (id string, error string) {
+func ValidateAccessToken(ctx *gin.Context) (id string, role string, error string) {
 	authHeader := ctx.GetHeader("Authorization")
 
 	if authHeader == "" {
-		return "", "access token is required"
+		return "", "", "access token is required"
 	} else {
 		tokenString := authHeader[len("Bearer "):]
 
 		exists := isAccessTokenAssigned(tokenString)
 
 		if !exists {
-			return "", "access token is not assigned to any user"
+			return "", "", "access token is not assigned to any user"
 		} else {
-			userId, err := ValidateJWT(tokenString)
+			userId, role, err := ValidateJWT(tokenString)
 
 			if err != nil {
-				return "", "invalid or expired access token"
+				return "", "", "invalid or expired access token"
 			} else {
-				return userId, ""
+				return userId, role, ""
 			}
 		}
 	}
