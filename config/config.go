@@ -7,4 +7,5 @@ var (
 	Err error
 )
 
-var BaseUrl = "http://localhost:8080/"
+// var BaseUrl = "http://localhost:8080/"
+var BaseUrl = "https://sanber-golang-final-project-production.up.railway.app/"
